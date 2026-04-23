@@ -1,7 +1,12 @@
+type LANGUAGE = 'python' | 'ruby';
+
 export class LangWorker {
   worker: Promise<Worker>;
 
-  constructor(type: string) {
+  /**
+   * Language worker wrapper
+  **/
+  constructor(type: LANGUAGE) {
     this.worker = new Promise((resolve, reject) => {
 
       let w = null;
