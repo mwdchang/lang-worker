@@ -1,3 +1,6 @@
+import PythonWorker from './python-worker?worker&inline';
+import RubyWorker from './ruby-worker?worker&inline';
+
 type LANGUAGE = 'python' | 'ruby';
 
 export class LangWorker {
@@ -9,15 +12,11 @@ export class LangWorker {
   constructor(type: LANGUAGE) {
     this.worker = new Promise((resolve, reject) => {
 
-      let w = null;
+      let w: Worker | null = null;
       if (type === 'python') {
-        w = new Worker(new URL('./python-worker.ts', import.meta.url), {
-          type: 'module'
-        })
+        w = new PythonWorker();
       } else {
-        w = new Worker(new URL('./ruby-worker.ts', import.meta.url), {
-          type: 'module'
-        })
+        w = new RubyWorker();
       }
 
       if (!w) {
