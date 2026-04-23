@@ -4,32 +4,32 @@ class n {
    * Language worker wrapper
   **/
   constructor(r) {
-    this.worker = new Promise((o, t) => {
+    this.worker = new Promise((o, s) => {
       let e = null;
       if (r === "python" ? e = new Worker(new URL(
         /* @vite-ignore */
-        "/assets/python-worker-_K4DXiwG.js",
+        "" + new URL("assets/python-worker-_K4DXiwG.js", import.meta.url).href,
         import.meta.url
       ), {
         type: "module"
       }) : e = new Worker(new URL(
         /* @vite-ignore */
-        "/assets/ruby-worker-CqUQM0CJ.js",
+        "" + new URL("assets/ruby-worker-CqUQM0CJ.js", import.meta.url).href,
         import.meta.url
       ), {
         type: "module"
       }), !e)
         throw new Error(`Unable to create worker for ${r}`);
-      e.onmessage = (s) => {
-        s.data === "initialized" ? o(e) : (console.error("Failed to initialize worker"), t(null));
+      e.onmessage = (t) => {
+        t.data === "initialized" ? o(e) : (console.error("Failed to initialize worker"), s(null));
       };
     });
   }
   async runCode(r) {
     const o = await this.worker;
-    return o.postMessage(r), new Promise((t, e) => {
-      o.onmessage = (s) => {
-        s.data && t(s.data), e(null);
+    return o.postMessage(r), new Promise((s, e) => {
+      o.onmessage = (t) => {
+        t.data && s(t.data), e(null);
       };
     });
   }
