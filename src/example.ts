@@ -9,7 +9,7 @@ const workers: Record<string, LangWorker> = {
 const DEFAULT_CODE: Record<string, string> = {
     // python: 'def fib(n):\n    a, b = 0, 1\n    for _ in range(n):\n        a, b = b, a + b\n    return a\n\nprint(f"Fibonacci(10) is {fib(10)}")',
     python: 'def fib(n):\n    a, b = 0, 1\n    for _ in range(n):\n        a, b = b, a + b\n    return a\n\nfib(10)',
-    ruby: 'def fib(n)\n  a, b = 0, 1\n  n.times { a, b = b, a + b }\n  a\nend\n\nputs "Fibonacci(10) is #{fib(10)}"'
+    ruby: 'def fib(n)\n  a, b = 0, 1\n  n.times { a, b = b, a + b }\n  a\nend\n\nfib(10)'
 };
 
 /**

@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "develop": "vite",
-    "build": "vite build"
+    "build": "vite build && vite build --config vite.demo.config.ts"
   },
   "devDependencies": {
     "@types/node": "^24.1.0",

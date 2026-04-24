@@ -11,7 +11,6 @@ const { vm } = await DefaultRubyVM(module);
 self.postMessage('initialized');
 
 self.onmessage = async (event: any) => {
-  console.log('hihihi', event.data);
   const result = vm.eval(event.data);
   if (result != null) {
     self.postMessage(result.toString());
